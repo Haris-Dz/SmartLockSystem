@@ -1,4 +1,4 @@
-<input id="inpLock" type="checkbox" checked>
+<input id="inpLock" type="checkbox" [(ngModel)]="locked" (change)="onLockChange()">
 
 <label class="btn-lock" for="inpLock">
   <svg width="108" height="120" viewBox="0 0 108 120"> <!-- 3x original width and height -->
