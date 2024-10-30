@@ -6,21 +6,26 @@
 body {
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   background-color: #fff;
 }
 
+.lock-container {
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align children horizontally */
+}
+
 .btn-lock {
-  position: absolute;
-  top: calc(50% - 96px); /* 3x the original 32px */
-  left: calc(50% - 96px); /* 3x the original 32px */
+  position: relative; /* Keep this relative for proper alignment */
   display: inline-block;
   background: #ff5b5b;
-  width: 192px; /* 3x the original 64px */
-  height: 192px; /* 3x the original 64px */
+  width: 192px;
+  height: 192px;
   box-sizing: border-box;
-  padding: 36px 0 0 54px; /* 3x the original padding */
+  padding: 36px 0 0 54px;
   border-radius: 50%;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -33,19 +38,19 @@ body {
 
 .btn-lock svg .bling {
   stroke: #fff;
-  stroke-width: 7.5px; /* 3x the original 2.5px */
+  stroke-width: 7.5px;
   stroke-linecap: round;
-  stroke-dasharray: 9; /* 3x the original 3 */
-  stroke-dashoffset: 45; /* 3x the original 15 */
+  stroke-dasharray: 9;
+  stroke-dashoffset: 45;
   transition: all 0.3s ease;
 }
 
 .btn-lock svg .lock {
   stroke: #fff;
-  stroke-width: 12px; /* 3x the original 4px */
+  stroke-width: 12px;
   stroke-linejoin: round;
   stroke-linecap: round;
-  stroke-dasharray: 108; /* 3x the original 36 */
+  stroke-dasharray: 108;
   transition: all 0.4s ease;
 }
 
@@ -54,7 +59,7 @@ body {
   fill-rule: evenodd;
   clip-rule: evenodd;
   transform: rotate(8deg);
-  transform-origin: 42px 60px; /* 3x the original transform-origin */
+  transform-origin: 42px 60px;
   transition: all 0.2s ease;
 }
 
@@ -76,29 +81,59 @@ body {
 }
 
 #inpLock:checked + label svg .lock {
-  stroke-dasharray: 144; /* 3x the original 48 */
+  stroke-dasharray: 144;
   animation: locked 0.3s linear forwards;
 }
 
 #inpLock:checked + label svg .lockb {
   transform: rotate(0);
-  transform-origin: 42px 66px; /* 3x the original transform-origin */
+  transform-origin: 42px 66px;
 }
+
+
+
+.status-label {
+  margin-top: 2%; /* Space between the button and the label */
+  font-size: 30px; /* Increased font size */
+  text-align: center; /* Center align the text */
+  font-weight: bold; /* Make the text bold */
+  padding: 10px; /* Add padding to make it look more like a button */
+  border-radius: 80px; /* Rounded corners */
+  transition: none; /* Remove hover transition */
+  cursor: default; /* Change cursor to default to indicate it's not clickable */
+  border: 8px solid transparent; /* Optional: transparent border for uniformity */
+  width: 200px; /* Fixed width to accommodate both messages */
+  height: 60px; /* Fixed height for uniformity */
+  display: flex; /* Enable flexbox layout */
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+}
+
+.locked {
+  background-color: #20cca5; /* Background for locked state */
+  color: white; /* Normal text color */
+}
+
+.unlocked {
+  background-color: #ff5b5b; /* Background for unlocked state */
+  color: white; /* Normal text color */
+}
+
 
 @keyframes bling6132 {
   50% {
-    stroke-dasharray: 9; /* 3x the original 3 */
-    stroke-dashoffset: 36; /* 3x the original 12 */
+    stroke-dasharray: 9;
+    stroke-dashoffset: 36;
   }
 
   100% {
-    stroke-dasharray: 9; /* 3x the original 3 */
-    stroke-dashoffset: 27; /* 3x the original 9 */
+    stroke-dasharray: 9;
+    stroke-dashoffset: 27;
   }
 }
 
 @keyframes locked {
   50% {
-    transform: translateY(3px); /* 3x the original 1px */
+    transform: translateY(3px);
   }
 }
