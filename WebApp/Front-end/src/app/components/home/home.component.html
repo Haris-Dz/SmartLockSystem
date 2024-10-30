@@ -1,11 +1,20 @@
-<input id="inpLock" type="checkbox" [(ngModel)]="locked" (change)="onLockChange()">
+<div class="lock-container">
+  <input id="inpLock" type="checkbox" [(ngModel)]="locked" (change)="onLockChange()">
 
-<label class="btn-lock" for="inpLock">
-  <svg width="108" height="120" viewBox="0 0 108 120"> <!-- 3x original width and height -->
-    <path class="lockb" d="M81 81C81 102.539 63.539 120 42 120C20.461 120 3 102.539 3 81C3 59.461 20.461 42 42 42C63.539 42 81 59.461 81 81ZM46.8894 79.5573C49.3632 77.9535 51 75.168 51 72C51 67.0294 46.9706 63 42 63C37.0294 63 33 67.0294 33 72C33 75.168 34.6368 77.9535 37.1106 79.5573L33 96H51L46.8894 79.5573Z"></path>
-    <path class="lock" d="M18 63V30C18 16.7452 28.7452 6 42 6V6C55.2548 6 66 16.7452 66 30V63"></path>
-    <path class="bling" d="M87 60L93 66"></path>
-    <path class="bling" d="M94.5 45H103.5"></path>
-    <path class="bling" d="M87 30L93 24"></path>
-  </svg>
-</label>
+  <label class="btn-lock" for="inpLock">
+    <svg width="108" height="120" viewBox="0 0 108 120">
+      <path class="lockb" d="M81 81C81 102.539 63.539 120 42 120C20.461 120 3 102.539 3 81C3 59.461 20.461 42 42 42C63.539 42 81 59.461 81 81ZM46.8894 79.5573C49.3632 77.9535 51 75.168 51 72C51 67.0294 46.9706 63 42 63C37.0294 63 33 67.0294 33 72C33 75.168 34.6368 77.9535 37.1106 79.5573L33 96H51L46.8894 79.5573Z"></path>
+      <path class="lock" d="M18 63V30C18 16.7452 28.7452 6 42 6V6C55.2548 6 66 16.7452 66 30V63"></path>
+      <path class="bling" d="M87 60L93 66"></path>
+      <path class="bling" d="M94.5 45H103.5"></path>
+      <path class="bling" d="M87 30L93 24"></path>
+    </svg>
+  </label>
+
+  <span class="status-label " [ngClass]="{'locked': locked, 'unlocked': !locked}">
+  {{ locked ? 'LOCKED' : 'UNLOCKED' }}
+  </span>
+
+
+
+</div>
