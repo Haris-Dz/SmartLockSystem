@@ -21,7 +21,7 @@ body {
 .btn-lock {
   position: relative; /* Keep this relative for proper alignment */
   display: inline-block;
-  background: #ff5b5b;
+  background: #20cca5;
   width: 192px;
   height: 192px;
   box-sizing: border-box;
@@ -68,7 +68,8 @@ body {
 }
 
 #inpLock:checked + label {
-  background: #20cca5;
+
+  background: #ff5b5b;
 }
 
 #inpLock:checked + label svg {
@@ -109,12 +110,12 @@ body {
   align-items: center; /* Center text vertically */
 }
 
-.locked {
+.unlocked {
   background-color: #20cca5; /* Background for locked state */
   color: white; /* Normal text color */
 }
 
-.unlocked {
+.locked {
   background-color: #ff5b5b; /* Background for unlocked state */
   color: white; /* Normal text color */
 }

@@ -57,28 +57,34 @@ namespace SmartLockSystem.Controllers
         [HttpPost("IOT")]
         public async Task<IActionResult> PostLockEventIOT([FromBody] LockEvent lockEvent)
         {
-            var action = new LockEvent
+            try
             {
-                Status = lockEvent.Status,
-                Timestamp = DateTime.Now,
-            };
-            lockEvent.Timestamp = DateTime.Now;
-            _context.LockEvents.Add(action);
-            await _context.SaveChangesAsync();
-            // Notify all Angular clients via SignalR
-            await _hubContext.Clients.All.SendAsync("ReceiveLockUpdate", lockEvent.Status);
+                lockEvent.Timestamp = DateTime.Now.AddHours(1);
+                _context.LockEvents.Add(lockEvent);
 
-            return Ok(new { message = "Lock event recorded." });
+                await _context.SaveChangesAsync();
+
+                // Notify all Angular clients via SignalR
+                await _hubContext.Clients.All.SendAsync("ReceiveLockUpdate", lockEvent.Status);
+
+                return Ok(new { message = "Lock event recorded: " + lockEvent.Status });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (e.g., to a logging service)
+                return StatusCode(500, new { message = "An error occurred while recording the lock event.", error = ex.Message });
+            }
         }
+
         [HttpPost("WebApp")]
         public async Task<IActionResult> PostLockEventWeb([FromBody] LockEvent lockEvent)
         {
             var action = new LockEvent
             {
                 Status = lockEvent.Status,
-                Timestamp = DateTime.Now,
+                Timestamp = DateTime.Now.AddHours(1),
             };
-            lockEvent.Timestamp = DateTime.Now;
+            lockEvent.Timestamp = DateTime.Now.AddHours(1);
             _context.LockEvents.Add(action);
             await _context.SaveChangesAsync();
 
