@@ -8,14 +8,14 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {LocationStrategy, HashLocationStrategy, NgOptimizedImage} from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
-import { LogsComponent } from './components/logs/logs.component';
+import { LockLogsComponent } from './components/lock-logs/lock-logs.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LogsComponent,
+    LockLogsComponent,
 
   ],
   imports: [
@@ -27,7 +27,7 @@ import { LogsComponent } from './components/logs/logs.component';
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
-      {path: 'logs', component: LogsComponent},
+      {path: 'logs', component: LockLogsComponent},
     ]),
     NgbModule,
     ReactiveFormsModule,
